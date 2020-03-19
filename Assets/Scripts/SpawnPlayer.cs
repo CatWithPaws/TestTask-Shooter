@@ -13,8 +13,8 @@ public class SpawnPlayer : MonoBehaviour
     private void Start()
     {
         Instance = this;
-        Vector3 SpawnPos = SpawnersTransform[Random.Range(0, SpawnersTransform.Length)].position;
-        PhotonNetwork.Instantiate(nameof(Player), SpawnPos, Quaternion.identity);
+        Vector3 _spawnPos = SpawnersTransform[Random.Range(0, SpawnersTransform.Length)].position;
+        PhotonNetwork.Instantiate(nameof(Player), _spawnPos, Quaternion.identity);
     }
     
 }

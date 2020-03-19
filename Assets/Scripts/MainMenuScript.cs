@@ -36,7 +36,7 @@ public class MainMenuScript : MonoBehaviourPunCallbacks
 
     }
 
-    void Log(string text)
+    private void Log(string text)
     {
         logger.text = text;
         Debug.Log(text);

@@ -18,11 +18,11 @@ public class GunSpawner : MonoBehaviour,IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) { }
 
-    void Start() {
+    private void Start() {
         EventManager.UsedGunsChangeEvent.AddListener(UpdateSpawner);
         PhotonView = GetComponent<PhotonView>();
     }
-    void Update()
+    private void Update()
     {
         if (canPick)
             UpdateSpawner();
@@ -43,7 +43,7 @@ public class GunSpawner : MonoBehaviour,IPunObservable
             HideGuns();
     }
 
-    void HideGuns()
+    private void HideGuns()
     {
         for (int i = 0; i < Guns.Length; i++)
             Guns[i].SetActive(false);
@@ -60,7 +60,7 @@ public class GunSpawner : MonoBehaviour,IPunObservable
         }
     }
 
-    IEnumerator CallDown()
+    private IEnumerator CallDown()
     {
         canPick = false;
 

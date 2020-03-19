@@ -614,7 +614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3005cdcbbf2695b4da972430ea45369b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Logger: {fileID: 0}
+  logger: {fileID: 964802296}
 --- !u!1 &964802294
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,7 +627,7 @@ GameObject:
   - component: {fileID: 964802297}
   - component: {fileID: 964802296}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Logger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -649,8 +649,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 326.3, y: 179.88}
-  m_SizeDelta: {x: 627.4, y: 359.75}
+  m_AnchoredPosition: {x: 326.3, y: 163.6}
+  m_SizeDelta: {x: 627.4, y: 327.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &964802296
 MonoBehaviour:
@@ -677,7 +677,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

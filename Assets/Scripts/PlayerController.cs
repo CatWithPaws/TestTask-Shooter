@@ -15,14 +15,14 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     public float Hp { get; private set; }
     [SerializeField] private GameObject playerMeshGameObject;
     [SerializeField] private SpawnPlayer spawnPlayer;
-    Transform playerTrasform;
-    Rigidbody playerRB;
-    Vector3 velocity;
-    float Speed { get; set; } = 10;
+    private Transform playerTrasform;
+    private Rigidbody playerRB;
+    private Vector3 velocity;
+    private float Speed { get; set; } = 10;
     int Multiplier { get; set; } = 2;
 
     [PunRPC]
-    void EndGame() => PhotonNetwork.LeaveRoom();
+    private void EndGame() => PhotonNetwork.LeaveRoom();
 
     [PunRPC]
     public void UpdateTop() => EventManager.UpdateTopListEvent.Invoke();
@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     [PunRPC]
     public void TakeDamage(float _damage, Photon.Realtime.Player _damager)
     {
+        if (isDead) return;
         Hp -= _damage;
         isDead = Hp <= 0;
         EventManager.UpdateUIEvent.Invoke();
@@ -64,9 +65,9 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         if (!photonView.IsMine) return;
         if (!uIController.IsPaused && !isDead)
         {
-            Vector3 horizonVector = playerTrasform.right * Input.GetAxisRaw("Horizontal");
-            Vector3 vertVector = playerTrasform.forward * Input.GetAxisRaw("Vertical");
-            velocity = (horizonVector + vertVector) * Speed;
+            Vector3 _horizonVector = playerTrasform.right * Input.GetAxisRaw("Horizontal");
+            Vector3 _vertVector = playerTrasform.forward * Input.GetAxisRaw("Vertical");
+            velocity = (_horizonVector + _vertVector) * Speed;
             velocity *= Input.GetKey(KeyCode.LeftShift) ? Multiplier : 1;
         }
         else velocity = Vector3.zero;
@@ -79,18 +80,18 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         else stream.SendNext(Score);
     }
 
-    void AddScoreToDamager(Photon.Realtime.Player _damager)
+    private void AddScoreToDamager(Photon.Realtime.Player _damager)
     {
         playerMeshGameObject.SetActive(false);
         EventManager.DeadEvent.Invoke();
-        if (photonView.IsMine) photonView.RPC(nameof(AddScore), _damager, 1);
+        if (photonView.IsMine && photonView.Owner != _damager) photonView.RPC(nameof(AddScore), _damager, 1);
     }
 
     private void CheckWin()
     {
-        Dictionary<string, int> scores = NetworkSyncManager.Instance.GetScoreList();
-        foreach (var scoreOne in scores)
-            if (scoreOne.Value >= 10)
+        Dictionary<string, int> _scores = NetworkSyncManager.Instance.GetScoreList();
+        foreach (var _scoreOne in _scores)
+            if (_scoreOne.Value >= 10)
                 photonView.RPC(nameof(EndGame), RpcTarget.All);
     }
 
@@ -105,14 +106,11 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         playerMeshGameObject.SetActive(true);
     }
 
-    IEnumerator Respawn()
+    private IEnumerator Respawn()
     {
-        if (!photonView.IsMine) {
-            playerMeshGameObject.SetActive(false);
+            playerMeshGameObject.gameObject.GetComponent<Material>().color = Color.red;
             yield return new WaitForSeconds(PlayerController.RespawnTime);
-            playerMeshGameObject.SetActive(true);
-        }
-        else yield return null;
+            playerMeshGameObject.gameObject.GetComponent<Material>().color = Color.yellow;
     }
     
    

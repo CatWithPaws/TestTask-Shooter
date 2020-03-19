@@ -32,7 +32,7 @@ public class SuplySpawner : MonoBehaviour,IPunObservable
 
     }
 
-    IEnumerator CallDown()
+    private IEnumerator CallDown()
     {
         canPick = false;
         supplyChrist.SetActive(false);

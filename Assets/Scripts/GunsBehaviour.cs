@@ -80,25 +80,25 @@ public class GunsBehaviour : MonoBehaviour,IPunObservable
     }
 
 
-    void DisableGuns()
+    private void DisableGuns()
     {
         foreach (var gun in Guns) 
             gun.SetActive(false);
     }
-    void SetFromProperties()
+    private void SetFromProperties()
     {
         CurrGun = (TypeGuns)PhotonNetwork.LocalPlayer.CustomProperties["currGun"];
         UpdateActiveWeapon();
     }
-    void UpdateActiveWeapon()
+    private void UpdateActiveWeapon()
     {
         foreach (GameObject gun in Guns)
             gun.SetActive(false);
 
         Guns[(int)CurrGun].SetActive(true);
     }
-    
-    IEnumerator DeclareOriginal()
+
+    private IEnumerator DeclareOriginal()
     {
         DisableGuns();
 
@@ -113,7 +113,7 @@ public class GunsBehaviour : MonoBehaviour,IPunObservable
         EventManager.UsedGunsChangeEvent.Invoke();
     }
 
-    TypeGuns GetWeapon()
+    private TypeGuns GetWeapon()
     {
         bool[] usedGuns = NetworkSyncManager.Instance.GetUsedGuns();
         TypeGuns _result;
@@ -127,7 +127,7 @@ public class GunsBehaviour : MonoBehaviour,IPunObservable
         return _result;
     }
 
-    IEnumerator Reload()
+    private IEnumerator Reload()
     {
         playerController.uIController.SetAmmoText("Reloading...");
         canShoot = false;
@@ -139,7 +139,7 @@ public class GunsBehaviour : MonoBehaviour,IPunObservable
         canShoot = true;
     }
 
-    void ShootPistol()
+    private void ShootPistol()
     {
         Ray _ray = cameraTransform.gameObject.GetComponent<Camera>().ViewportPointToRay(new Vector3(.5f, .5f, 0));
         RaycastHit _hit;
@@ -149,21 +149,21 @@ public class GunsBehaviour : MonoBehaviour,IPunObservable
             _playerController?.photonView.RPC(nameof(playerController.TakeDamage),_playerController.photonView.Owner,pistolDamage,playerController.photonView.Owner);
         }   
     }
-    void ShootBow()
+    private void ShootBow()
     {
         GameObject arrow = PhotonNetwork.Instantiate(
             arrowPrefab.name,
             arrowGunShootPos.position,
             cameraTransform.gameObject.GetComponent<CameraController>().CurrRotation);
     }
-    void ShootLauncher()
+    private void ShootLauncher()
     {
         GameObject rocket = PhotonNetwork.Instantiate(rocketPrefab.name,
             launcherShootPos.position,
             cameraTransform.gameObject.GetComponent<CameraController>().CurrRotation);
     }
 
-    IEnumerator ShootDelay(int _seconds) {
+    private IEnumerator ShootDelay(int _seconds) {
 
         canShoot = false;
 

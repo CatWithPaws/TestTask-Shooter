@@ -28,9 +28,9 @@ public class UIController : MonoBehaviour
 
     private void CleanTopList()
     {
-        foreach (Text text in _topPlayers)
+        foreach (Text _text in _topPlayers)
         {
-            text.text = "";
+            _text.text = "";
         }
     }
 

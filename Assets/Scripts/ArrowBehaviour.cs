@@ -9,15 +9,15 @@ public class ArrowBehaviour : MonoBehaviour
     private Vector3 arrowDirection;
     private float damage = 15;
     private Photon.Realtime.Player owner;
-    void Start()
+    private void Start()
     {
-        arrowDirection = transform.forward * 6;
+        arrowDirection = transform.forward * 12;
         photonView = GetComponent<PhotonView>();
         owner = photonView.Owner;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         transform.localRotation = Quaternion.LookRotation(arrowDirection);
         transform.Translate(transform.forward * Time.deltaTime * 40,Space.World) ;

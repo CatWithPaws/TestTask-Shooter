@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
     private Transform cameraTransform;
     [SerializeField] private Transform playerTransform;
     private float sensivity = 5;
-    float rotX = 0,rotY = 0;
+    private float rotX = 0,rotY = 0;
     [SerializeField] private PhotonView _photonView;
     [SerializeField] private Transform cameraPos;
     [SerializeField] private GameObject PlayerGraphics;

@@ -28,7 +28,7 @@ public class AmmoSpawner : MonoBehaviour, IPunObservable
 
     }
 
-    IEnumerator CallDown()
+    private IEnumerator CallDown()
     {
         canPick = false;
         ammoBox.SetActive(false);

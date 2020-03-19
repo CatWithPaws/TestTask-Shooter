@@ -13,15 +13,15 @@ public class RocketBehaviour : MonoBehaviour
     private Vector3 _rocketDirection;
     private float _rocketRadius = 5;
 
-    void Start()
+    private void Start()
     {
-        _rocketDirection = transform.forward * 3;
+        _rocketDirection = transform.forward * 6;
         photonView = GetComponent<PhotonView>();
         owner = photonView.Owner;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
 
         transform.localRotation = Quaternion.LookRotation(_rocketDirection);
@@ -32,14 +32,14 @@ public class RocketBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Collider[] others = Physics.OverlapSphere(transform.position,_rocketRadius);
-        others = others.Where(p => p.gameObject.GetComponentInParent<PlayerController>() != null).Distinct().ToArray();
-        foreach (Collider one in others)
+        Collider[] _others = Physics.OverlapSphere(transform.position,_rocketRadius);
+        _others = _others.Where(p => p.gameObject.GetComponentInParent<PlayerController>() != null).Distinct().ToArray();
+        foreach (Collider _one in _others)
         {
-            PlayerController _playerController = one.gameObject.GetComponentInParent<PlayerController>();
+            PlayerController _playerController = _one.gameObject.GetComponentInParent<PlayerController>();
             if (_playerController)
             {
-                float _distanceToOne = Vector3.Distance(transform.position, one.transform.position);
+                float _distanceToOne = Vector3.Distance(transform.position, _one.transform.position);
                 float _willDamage = damage - (_distanceToOne / _rocketRadius) * damage;
                 _playerController.photonView.RPC(nameof(_playerController.TakeDamage), _playerController.photonView.Owner, _willDamage, owner);
                 EventManager.UpdateTopListEvent.Invoke();
