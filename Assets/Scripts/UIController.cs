@@ -15,6 +15,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private Text[] _topPlayers;
 
     public void SetAmmoText(string _text) => ammoText.text = _text;
+    public void LeftRoom() => PhotonNetwork.LeaveRoom();
     private void OnDead() => StartCoroutine(Respawn());
 
     private void Awake()
