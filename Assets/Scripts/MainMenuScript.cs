@@ -24,7 +24,7 @@ public class MainMenuScript : MonoBehaviourPunCallbacks
         Log("Connected to Lobby.\nJoin to a game or create own!");
     }
 
-    public void CreateRoom() => PhotonNetwork.CreateRoom(PhotonNetwork.NickName + "Room");
+    public void CreateRoom() => PhotonNetwork.CreateRoom(PhotonNetwork.NickName + "Room",new Photon.Realtime.RoomOptions { MaxPlayers = 2 });
 
 
     public void JoinToRoom() => PhotonNetwork.JoinRandomRoom();
