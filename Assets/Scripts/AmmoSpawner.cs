@@ -36,7 +36,4 @@ public class AmmoSpawner : MonoBehaviour, IPunObservable
         ammoBox.SetActive(true);
         canPick = true;
     }
-    
-
-
 }
