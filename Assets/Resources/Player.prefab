@@ -119,42 +119,42 @@ PrefabInstance:
     - target: {fileID: 1935335180753785419, guid: d1cd226f38612d740afcddb0f83f6621,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1935335180753785419, guid: d1cd226f38612d740afcddb0f83f6621,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1935335180753785419, guid: d1cd226f38612d740afcddb0f83f6621,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 153.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1935335180753785419, guid: d1cd226f38612d740afcddb0f83f6621,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -284.00067
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5703620905245158820, guid: d1cd226f38612d740afcddb0f83f6621,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5703620905245158820, guid: d1cd226f38612d740afcddb0f83f6621,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5703620905245158820, guid: d1cd226f38612d740afcddb0f83f6621,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 153.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5703620905245158820, guid: d1cd226f38612d740afcddb0f83f6621,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -94.66689
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5727196427460774614, guid: d1cd226f38612d740afcddb0f83f6621,
         type: 3}
@@ -271,6 +271,36 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 5139788365267810137}
+    - target: {fileID: 5727196428525549825, guid: d1cd226f38612d740afcddb0f83f6621,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727196428525549825, guid: d1cd226f38612d740afcddb0f83f6621,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727196428525549825, guid: d1cd226f38612d740afcddb0f83f6621,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727196428525549825, guid: d1cd226f38612d740afcddb0f83f6621,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3202452074722749455}
+    - target: {fileID: 5727196428525549825, guid: d1cd226f38612d740afcddb0f83f6621,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LeftRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727196428525549825, guid: d1cd226f38612d740afcddb0f83f6621,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 9065843791812014519, guid: d1cd226f38612d740afcddb0f83f6621,
         type: 3}
       propertyPath: playerController
